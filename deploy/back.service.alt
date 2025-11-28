@@ -1,0 +1,21 @@
+[Unit]
+Description=FastAPI Backend Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/project/back
+Environment="PATH=/var/www/project/back/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONPATH=/var/www/project/back"
+# Alternative: use system python3 with venv python
+ExecStart=/var/www/project/back/.venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+
