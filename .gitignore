@@ -24,6 +24,8 @@ yarn-error.log*
 .env.local
 .env.production.local
 .env.development.local
+back/.env
+back/.env_example
 
 # IDE
 .vscode/
